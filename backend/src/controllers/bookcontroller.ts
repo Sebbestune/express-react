@@ -1,6 +1,6 @@
 
 export const getAllBooks = (req: any, res: any) => {
-    res.send({totalBooks: 2, books: [
+    res.json({totalBooks: 2, books: [
         {
             author: "Sebbe",
             title: "The green book",
