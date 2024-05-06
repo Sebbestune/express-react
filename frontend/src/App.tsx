@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
+export const getBooksFromAPI = async () => {
+  const url = "http://localhost:3000/api/books";
+  const response = await fetch(url);
+  const result = await response.json();
+  return result;
+};
+
 function App() {
   const [books, setBooks]: any = useState(null);
 
-  const getBooksFromAPI = async () => {
-    const url = "http://localhost:3000/api/books";
-    const response = await fetch(url);
-    const result = await response.json();
+  const setBooksFromAPI = async () => {
+    const result = await getBooksFromAPI();
     console.log(result);
     setBooks(result);
-  };
+  }
 
   useEffect(() => {
-    getBooksFromAPI();
+    setBooksFromAPI();
   }, []);
 
   return (
