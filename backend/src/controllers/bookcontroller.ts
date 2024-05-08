@@ -18,6 +18,27 @@ const deleteOne = async (id: any) => {
   return await Book.findByIdAndDelete(id);
 };
 
+export const changeAmountOfBooks = async (req: any, res: any) => {
+    const id = req.params.id;
+    const amount = req.params.amount;
+
+    let tmp :any;
+    tmp = await read(id);
+
+    console.log(tmp);
+
+    let obj = tmp.toObject();
+    delete obj._id;
+
+    console.log(obj);
+
+    for(let i = 0; i < amount; i++){
+        const result = await Book.create(obj);
+    }
+
+    res.status(200).json({success: true});
+  };
+
 export const getAllBooks = async (req: any, res: any) => {
   const books = await readAll();
   res.status(200).json(books);
