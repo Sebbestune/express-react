@@ -1,8 +1,11 @@
 import express, { Express, Request, Response } from "express";
 import cors from "cors";
 import bookRouter from "./routes/books";
+import connectDB from "./db/db"
 
 const app: Express = express();
+
+connectDB;
 
 app.use(cors());
 app.use(express.json());
